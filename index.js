@@ -73,6 +73,16 @@ function addElement(content){
     container.appendChild(div);
 }
 
+function shuffle(arr){
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    return arr;
+}
+
 function startShuffle(num, tot_price){
     var price_list = [];
     var price;
@@ -82,6 +92,7 @@ function startShuffle(num, tot_price){
         tot_price -= price;
     }
     price_list.push(tot_price);
+    shuffle(price_list);
     for(var i = 0; i < num ; i++){
         addElement(`${i}: ${price_list[i]}원`)
     }
